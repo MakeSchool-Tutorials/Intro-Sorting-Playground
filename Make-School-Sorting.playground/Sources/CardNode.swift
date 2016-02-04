@@ -7,6 +7,10 @@ public class CardNode: SKNode {
     let textPosition = CGPoint(x: 15, y: 80);
     let textSize: CGFloat = 18;
     
+    public convenience init(card: Card) {
+        self.init(value: card.value)
+    }
+    
     public init(value: Int) {
         super.init();
         let cardShape = SKShapeNode(rect: cardRect, cornerRadius: cardCornerRadius);
