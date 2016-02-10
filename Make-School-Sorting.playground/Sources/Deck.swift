@@ -49,7 +49,6 @@ public class Deck {
                 }
             }
             if (targetIndex == nil) {
-                print("array is unchanged.")
                 return
             }
             for i in 0..<cards.count {
