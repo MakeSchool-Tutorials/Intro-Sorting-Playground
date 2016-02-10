@@ -7,19 +7,12 @@ public class CardSortScene: SKScene {
     var cardNodes = [CardNode]()
     
     var actionQueue = [CardAction]()
-    let animationTime = 2.0
+    let animationTime = 0.7
     
     public init(deck: Deck, size: CGSize) {
         self.deck = deck
         super.init(size: size)
         deck.updateDelegate = enqueueAction
-    }
-
-    required public init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override public func didMoveToView(view: SKView) {
         for i in 0..<deck.cards.count {
             let card = deck.cards[i]
             let cardNode = CardNode(value: card.value)
@@ -28,13 +21,18 @@ public class CardSortScene: SKScene {
             self.addChild(cardNode)
             cardNodes.append(cardNode)
         }
+    }
+
+    required public init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override public func didMoveToView(view: SKView) {
         animate()
-        print("hi")
     }
     
     func animate() {
         if let action = actionQueue.first {
-            print("animating \(action.actionType)")
             switch action.actionType {
             case .Copy:
                 let copy = CardNode(card: action.newValue!)
@@ -74,29 +72,10 @@ public class CardSortScene: SKScene {
         if let last = actionQueue.last {
             if let combinedAction = CardAction.reduce(last, second: action) {
                 actionQueue[actionQueue.count-1] = combinedAction
-                print(actionQueue.count)
                 return
             }
         }
         actionQueue.append(action)
-        print(actionQueue.count)
-    }
-    
-    func swap(first: Int, _ second: Int) {
-        let temp = cardNodes[first]
-        cardNodes[first] = cardNodes[second]
-        cardNodes[second] = temp
-        
-        let firstCard = cardNodes[first]
-        let secondCard = cardNodes[second]
-        
-        firstCard.zPosition = CGFloat(first)
-        secondCard.zPosition = CGFloat(second)
-        
-        // TODO: make actions queue up
-        firstCard.runAction(SKAction.moveTo(cardPositionForIndex(first), duration: animationTime))
-        secondCard.runAction(SKAction.moveTo(cardPositionForIndex(second), duration: animationTime))
-        
     }
     
     func cardPositionForIndex(index: Int) -> CGPoint {
@@ -104,5 +83,14 @@ public class CardSortScene: SKScene {
         let origin = CGPoint(x: 50, y: 450)
         let delta = CGPoint(x: 10, y: -30)
         return CGPoint(x: origin.x + delta.x * v, y: origin.y + delta.y * v)
+    }
+    
+    public static func setupScene(deck: Deck) -> (SKView, CardSortScene) {
+        let size = CGSize(width: 320, height: 576)
+        let sceneView = SKView(frame: CGRect(origin: CGPointZero, size: size))
+        let scene = CardSortScene(deck: deck, size: size)
+        scene.scaleMode = .AspectFill;
+        scene.backgroundColor = SKColor.grayColor();
+        return (sceneView, scene)
     }
 }
