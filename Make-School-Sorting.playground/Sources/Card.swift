@@ -18,6 +18,8 @@ public struct Card: Equatable {
     }
 }
 
+
+
 public func ==(card1: Card, card2: Card) -> Bool {
     return card1.value == card2.value &&
            card1.suite == card2.suite
