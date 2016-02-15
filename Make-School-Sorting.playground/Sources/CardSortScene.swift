@@ -28,7 +28,10 @@ public class CardSortScene: SKScene {
     }
     
     override public func didMoveToView(view: SKView) {
-        animate()
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) { () -> Void in
+            self.animate()
+        }
     }
     
     func animate() {
@@ -37,11 +40,11 @@ public class CardSortScene: SKScene {
             case .Copy:
                 let copy = CardNode(card: action.newValue!)
                 copy.position = cardPositionForIndex(action.originIndex!)
-                copy.zPosition = CGFloat(action.targetIndex)
-                let moveAction = SKAction.moveTo(cardPositionForIndex(action.targetIndex), duration: animationTime)
                 self.addChild(copy)
-                copy.runAction(moveAction, completion: { () -> Void in
-                    let old = self.cardNodes[action.targetIndex]
+                
+                let old = self.cardNodes[action.targetIndex]
+                old.animateDisappear({})
+                copy.animateMove(cardPositionForIndex(action.targetIndex), zPosition: CGFloat(action.targetIndex), completion: { () -> Void in
                     old.removeFromParent()
                     self.cardNodes[action.targetIndex] = copy
                     self.actionQueue.removeFirst()
@@ -50,12 +53,9 @@ public class CardSortScene: SKScene {
             case .Swap:
                 let first = cardNodes[action.originIndex!]
                 let second = cardNodes[action.targetIndex]
-                let firstAction = SKAction.moveTo(cardPositionForIndex(action.targetIndex), duration: animationTime)
-                let secondAction = SKAction.moveTo(cardPositionForIndex(action.originIndex!), duration: animationTime)
-                first.zPosition = CGFloat(action.targetIndex)
-                second.zPosition = CGFloat(action.originIndex!)
-                first.runAction(firstAction)
-                second.runAction(secondAction, completion: { () -> Void in
+                
+                first.animateMove(cardPositionForIndex(action.targetIndex), zPosition: CGFloat(action.targetIndex), completion: {})
+                second.animateMove(cardPositionForIndex(action.originIndex!), zPosition: CGFloat(action.originIndex!), completion: { () -> Void in
                     self.cardNodes[action.originIndex!] = second
                     self.cardNodes[action.targetIndex] = first
                     
@@ -63,7 +63,16 @@ public class CardSortScene: SKScene {
                     self.animate()
                 })
             case .Set:
-                break
+                let copy = CardNode(card: action.newValue!)
+                copy.position = cardPositionForIndex(action.targetIndex)
+                copy.animateAppear({})
+                let old = self.cardNodes[action.targetIndex]
+                old.animateDisappear({ () -> Void in
+                    old.removeFromParent()
+                    self.cardNodes[action.targetIndex] = copy
+                    self.actionQueue.removeFirst()
+                    self.animate()
+                })
             }
         }
     }
