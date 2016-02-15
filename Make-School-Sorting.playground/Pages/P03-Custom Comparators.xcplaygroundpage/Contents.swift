@@ -9,15 +9,15 @@ Don't worry about the code here – this sets up the deck of cards that we'll be
 
 /*:
 
-# Custom Comparators: Sorting by arbitrary things
+# Custom Comparators: Sorting by arbitrary properties
 
-So far we've only been sorting using the `value` property of the `Card` struct. But that's typically not how a fresh pack of cards is sorted by – it's typically sorted by value, then by suite order.
+So far we've only been sorting using the `value` property of the `Card` struct. But that's typically not how a fresh pack of cards is sorted by – it's typically sorted by suite order, then by value.
 
 */
 let numCardsInSuite = 13
 
 public func <(first: Card, second: Card) -> Bool {
-    return first.value * numCardsInSuite + first.suite.rawValue < second.value * numCardsInSuite + second.suite.rawValue
+    return first.suite.rawValue * numCardsInSuite + first.value < second.suite.rawValue * numCardsInSuite + second.value
 }
 
 extension Deck {

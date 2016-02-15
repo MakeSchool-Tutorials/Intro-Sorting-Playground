@@ -15,7 +15,7 @@ public class CardSortScene: SKScene {
         deck.updateDelegate = enqueueAction
         for i in 0..<deck.cards.count {
             let card = deck.cards[i]
-            let cardNode = CardNode(value: card.value)
+            let cardNode = CardNode(card: card)
             cardNode.position = cardPositionForIndex(i)
             cardNode.zPosition = CGFloat(i)
             self.addChild(cardNode)

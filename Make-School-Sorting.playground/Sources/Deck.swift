@@ -16,7 +16,7 @@ public class Deck {
             var suite: Suite
             var unique = true
             repeat {
-                value = random() % 13
+                value = random() % 13 + 1
                 suite = Suite(rawValue: random() % 4)!
                 
                 // check if card is unique

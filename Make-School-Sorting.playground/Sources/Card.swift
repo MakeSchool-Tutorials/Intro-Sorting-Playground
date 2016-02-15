@@ -16,6 +16,22 @@ public struct Card: Equatable {
         self.value = value
         self.suite = suite
     }
+    
+    public func text() -> String {
+        let valueText: String
+        if (value == 1) {
+            valueText = "A"
+        } else if (value == 11) {
+            valueText = "J"
+        } else if (value == 12) {
+            valueText = "Q"
+        } else if (value == 13) {
+            valueText = "K"
+        } else {
+            valueText = "\(value)"
+        }
+        return valueText + " " + suite.emoji()
+    }
 }
 
 
@@ -30,4 +46,17 @@ public enum Suite: Int {
     case Diamond
     case Heart
     case Spade
+    
+    public func emoji() -> String {
+        switch self {
+        case .Club:
+            return "♣️"
+        case .Diamond:
+            return "♦️"
+        case .Heart:
+            return "♥️"
+        case .Spade:
+            return "♠️"
+        }
+    }
 }
