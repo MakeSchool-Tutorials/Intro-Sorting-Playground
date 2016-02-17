@@ -10,7 +10,10 @@ import Foundation
 
 public class Deck {
     
-    public init(numberCards: Int = 13) {
+    public let comparator: ((Card, Card) -> (Int))?
+    
+    public init(comparator: ((Card, Card) -> (Int))?, numberCards: Int = 13) {
+        self.comparator = comparator
         for i in 0..<numberCards {
             var value: Int
             var suite: Suite
@@ -73,4 +76,24 @@ public class Deck {
         }
     }
 
+    public func isSorted() -> Bool {
+        if comparator == nil {
+            return true
+        }
+        for i in 0..<cards.count-1 {
+            if comparator!(cards[i], cards[i+1]) > 0 {
+                return false
+            }
+        }
+        return true
+    }
+}
+
+public func suiteFirstComparator(first: Card, second: Card) -> Int {
+    let numCardsInSuite = 13
+    return (first.suite.rawValue * numCardsInSuite + first.value) - (second.suite.rawValue * numCardsInSuite + second.value)
+}
+
+public func valueOnlyComparator(first: Card, second: Card) -> Int {
+    return first.value - second.value
 }

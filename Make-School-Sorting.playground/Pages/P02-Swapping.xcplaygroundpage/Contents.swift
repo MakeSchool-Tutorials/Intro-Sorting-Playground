@@ -1,5 +1,5 @@
 import XCPlayground
-let deck = Deck()
+let deck = Deck(comparator: nil)
 let (sceneView, scene) = CardSortScene.setupScene(deck)
 /*:
 Don't worry about the code here – this sets up the deck of cards that we'll be manipulating, and the scene that displays it.

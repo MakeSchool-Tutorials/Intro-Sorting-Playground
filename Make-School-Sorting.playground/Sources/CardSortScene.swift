@@ -90,7 +90,13 @@ public class CardSortScene: SKScene {
                 })
             }
         } else {
-            actionLabel.text = "Sorting finished"
+            if deck.comparator != nil {
+                if deck.isSorted() {
+                    actionLabel.text = "Sorting finished! :)"
+                } else {
+                    actionLabel.text = "Not sorted! :("
+                }
+            }
         }
     }
     
