@@ -9,8 +9,11 @@ public class CardSortScene: SKScene {
     var actionQueue = [CardAction]()
     let animationTime = 0.7
     
+    let actionLabel: SKLabelNode
+    
     public init(deck: Deck, size: CGSize) {
         self.deck = deck
+        actionLabel = SKLabelNode(fontNamed: "Helvetica Neue")
         super.init(size: size)
         deck.updateDelegate = enqueueAction
         for i in 0..<deck.cards.count {
@@ -21,6 +24,12 @@ public class CardSortScene: SKScene {
             self.addChild(cardNode)
             cardNodes.append(cardNode)
         }
+        
+        actionLabel.fontSize = 24.0
+        actionLabel.verticalAlignmentMode = .Baseline
+        actionLabel.horizontalAlignmentMode = .Center
+        actionLabel.position = CGPoint(x: 160, y: 50)
+        self.addChild(actionLabel)
     }
 
     required public init?(coder aDecoder: NSCoder) {
@@ -42,6 +51,8 @@ public class CardSortScene: SKScene {
                 copy.position = cardPositionForIndex(action.originIndex!)
                 self.addChild(copy)
                 
+                actionLabel.text = "Copying \(action.newValue!.text()) to index \(action.targetIndex)"
+                
                 let old = self.cardNodes[action.targetIndex]
                 old.animateDisappear({})
                 copy.animateMove(cardPositionForIndex(action.targetIndex), zPosition: CGFloat(action.targetIndex), completion: { () -> Void in
@@ -54,6 +65,8 @@ public class CardSortScene: SKScene {
                 let first = cardNodes[action.originIndex!]
                 let second = cardNodes[action.targetIndex]
                 
+                actionLabel.text = "Swapping \(action.newValue!.text()) with \(action.oldValue!.text())"
+                
                 first.animateMove(cardPositionForIndex(action.targetIndex), zPosition: CGFloat(action.targetIndex), completion: {})
                 second.animateMove(cardPositionForIndex(action.originIndex!), zPosition: CGFloat(action.originIndex!), completion: { () -> Void in
                     self.cardNodes[action.originIndex!] = second
@@ -63,6 +76,8 @@ public class CardSortScene: SKScene {
                     self.animate()
                 })
             case .Set:
+                actionLabel.text = "Setting index \(action.targetIndex) to \(action.newValue!.text())"
+                
                 let copy = CardNode(card: action.newValue!)
                 copy.position = cardPositionForIndex(action.targetIndex)
                 copy.animateAppear({})
@@ -74,6 +89,8 @@ public class CardSortScene: SKScene {
                     self.animate()
                 })
             }
+        } else {
+            actionLabel.text = "Sorting finished"
         }
     }
     
@@ -99,7 +116,7 @@ public class CardSortScene: SKScene {
         let sceneView = SKView(frame: CGRect(origin: CGPointZero, size: size))
         let scene = CardSortScene(deck: deck, size: size)
         scene.scaleMode = .AspectFill;
-        scene.backgroundColor = SKColor.grayColor();
+        scene.backgroundColor = SKColor.darkGrayColor();
         return (sceneView, scene)
     }
 }

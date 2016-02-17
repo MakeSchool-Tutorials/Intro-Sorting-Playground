@@ -62,19 +62,10 @@ deck.bubblesort()
 
 /*:
 
-Well, that didn't sort the deck completely. But you'll notice, that now the largest card has "bubbled" to the end of the array! If we do this multiple times, we'll get the next largest card to be at one before the end, the next next largest card to be two before the end, and so on.
+Well, that didn't sort the deck completely. But you'll notice, that now the largest card has "bubbled" to the end of the array! If we do this multiple times, we'll get the next largest card to be at one before the end, the next next largest card to be two before the end, and so on. Note that when you go through this process the second time, you don't need to compare the last two cards, since the last card is already in place. This also holds true for the next iteration: in the third run, the last two cards are in place, and so on...
 
-All we need to do is to nest our `for` loop into another `for`:
+Can you modify our `bubblesort()` function and give it its complete implementation? Hint: It involves wrapping our existing code into _another_ for loop, and then modifying the variables that determine when the "bubbling" process ends.
 
-    for end in (cards.count-2).stride(to:1, by: -1) {
-        for index in 0...end {
-            if cards[index].value > cards[index+1].value {
-                swap(index, index+1)
-            }
-        }
-    }
-
-Here, we use the `stride` function to iterate through a for loop with an `end` variable that goes backwards from `cards.count-2` to `1`. You'll notice that we use this `end` variable to dictate the end that `index` iterates through. We do this because once the last card in the array is sorted, it's redundant to go through and try to sort it again. The same happens after the second run through the larger for loop: since the last two elements are sorted, we skip those and iterate up until the cards before.
 */
 
 /*:

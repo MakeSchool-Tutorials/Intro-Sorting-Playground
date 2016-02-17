@@ -27,18 +27,7 @@ Let's start by finding the lowest value card: We have a for loop, which goes thr
     }
     swap(lowestIndex, 0)
 
-Cool! Now repeat this as many times as there are cards in the array, making sure to do the swap with the index the points to the current position in the unsorted area of the array.
-
-    for count in 0...cards.count-2 {
-        var lowestIndex = count
-        for index in count+1...cards.count-1 {
-            if cards[index].value < cards[lowestIndex].value {
-                lowestIndex = index
-            }
-        }
-        swap(lowestIndex, count)
-    }
-
+Cool! Now repeat this as many times as there are cards in the array, making sure to do the swap with the index the points to the first position in the _unsorted_ area of the array. Can you figure out the rest of the implementation?
 */
 
 extension Deck {

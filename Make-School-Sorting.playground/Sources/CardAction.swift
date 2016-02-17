@@ -39,11 +39,11 @@ public struct CardAction {
         self.actionType = .Copy
     }
     
-    init(swapIndex: Int, with: Int) {
+    init(swapIndex: Int, with: Int, value: Card, otherValue: Card) {
         self.targetIndex = swapIndex
         self.originIndex = with
-        self.oldValue = nil
-        self.newValue = nil
+        self.oldValue = value
+        self.newValue = otherValue
         self.actionType = .Swap
     }
     
@@ -52,7 +52,7 @@ public struct CardAction {
             first.originIndex == second.targetIndex &&
             first.oldValue == second.newValue) {
             // reduce to a swap!
-            return CardAction(swapIndex: first.targetIndex, with: second.targetIndex)
+            return CardAction(swapIndex: first.targetIndex, with: second.targetIndex, value: first.oldValue!, otherValue: first.newValue!)
         } else {
             return nil
         }
