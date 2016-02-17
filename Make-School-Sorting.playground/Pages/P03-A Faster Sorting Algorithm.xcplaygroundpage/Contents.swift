@@ -32,6 +32,8 @@ Cool! Now repeat this as many times as there are cards in the array, making sure
 
 extension Deck {
     func selectionsort() {
+        //Student code here!
+        // TODO: Remove code
         for count in 0...cards.count-2 {
             var lowestIndex = count
             for index in count+1...cards.count-1 {
