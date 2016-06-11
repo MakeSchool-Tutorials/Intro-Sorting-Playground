@@ -117,11 +117,13 @@ public class CardSortScene: SKScene {
     }
     
     public static func setupScene(deck: Deck) -> (SKView, CardSortScene) {
-        let size = CGSize(width: 320, height: 576)
+        let size = CGSize(width: 320, height: 568)
         let sceneView = SKView(frame: CGRect(origin: CGPointZero, size: size))
         let scene = CardSortScene(deck: deck, size: size)
         scene.scaleMode = .AspectFill;
-        scene.backgroundColor = SKColor.darkGrayColor();
+        let background = SKSpriteNode(imageNamed: "card_sorting-background")
+        background.anchorPoint = CGPoint(x: 0, y: 0)
+        scene.addChild(background)
         return (sceneView, scene)
     }
 }
