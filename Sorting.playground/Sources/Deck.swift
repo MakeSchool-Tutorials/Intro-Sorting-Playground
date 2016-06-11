@@ -48,7 +48,7 @@ public class Deck {
             for i in 0..<cards.count {
                 if (oldValue[i] != cards[i]) {
                     targetIndex = i
-                    break
+                    break;
                 }
             }
             if (targetIndex == nil) {

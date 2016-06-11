@@ -45,5 +45,5 @@ deck.selectionSort()
 /*:
  Don't worry about this code. This takes the scene and deck information and displays it.
  */
-sceneView.presentScene(scene);
-XCPlaygroundPage.currentPage.liveView = sceneView;
+sceneView.presentScene(scene)
+XCPlaygroundPage.currentPage.liveView = sceneView
