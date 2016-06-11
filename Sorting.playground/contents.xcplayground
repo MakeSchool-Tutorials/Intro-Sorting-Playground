@@ -3,9 +3,9 @@
     <pages>
         <page name='P01-Introduction'/>
         <page name='P02-Swapping'/>
-        <page name='P03-Sorting'/>
+        <page name='P03-Bubble-Sort'/>
         <page name='P04-Selection-Sort'/>
-        <page name='P03-Custom Comparators'/>
-        <page name='P04-MergeSort'/>
+        <page name='P05-Custom-Comparitors'/>
+        <page name='P06-Merge-Sort'/>
     </pages>
 </playground>
