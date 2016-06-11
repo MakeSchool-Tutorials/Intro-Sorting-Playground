@@ -2,69 +2,48 @@ import XCPlayground
 let deck = Deck(comparator: valueOnlyComparator)
 let (sceneView, scene) = CardSortScene.setupScene(deck)
 /*:
-Don't worry about the code here – this sets up the deck of cards that we'll be manipulating, and the scene that displays it.
-*/
-
+ Don't worry about the code here – this sets up the deck of cards that we'll be manipulating, and the scene that displays it.
+ */
 //: [Previous](@previous)
-
 /*:
-
-# A faster sorting algorithm: Selection Sort
-
-Selection sort is perhaps what you first think of when sorting an array. It works as follows:
-
-1. Find the lowest value in the array. Keep track of which index that card resides at.
-2. Swap the lowest card with the first card.
-3. Repeat, by finding the lowest card in the rest of the array. On step #2, swap with the first card in the unsorted section.
-
-Let's start by finding the lowest value card: We have a for loop, which goes through all the cards, and a variable declared _outside_ the for loop, which keeps track of the index to the lowest card. If we find a card that's lower than the one lowestIndex points to, we update lowestIndex to the new index. After everything is over, we swap `lowestIndex` with 0, the first element.
-
-    var lowestIndex = 0
-    for index in 1...cards.count-1 {
-        if cards[index].value < cards[lowestIndex].value {
-            lowestIndex = index
-        }
-    }
-    swap(lowestIndex, 0)
-
-Cool! Now repeat this as many times as there are cards in the array, making sure to do the swap with the index the points to the first position in the _unsorted_ area of the array. Can you figure out the rest of the implementation?
-*/
+ 
+ # A faster sorting algorithm: Selection Sort
+ 
+ _Selection sort_ is perhaps what you first think of when sorting an `Array`. Before we get started, let's check in with the dancers again! Check it out in action [here](https://www.youtube.com/watch?v=Ns4TPTC8whw).
+ 
+  - callout(Challenge): As you watch, try to write out pseudocode for the algorithm on pen and paper. Save this so you can compare it to the pseudocode we give you later in this section!
+ 
+ ## How it works
+ 
+ 1. Find the lowest value in the array. Keep track of which index that card resides at.
+ 2. Swap the lowest card with the first card.
+ 3. Repeat steps 1 and 2 by finding the lowest card in the rest of the array. On step 2, swap with the first card in the unsorted section.
+ 
+ - callout(Challenge): Translate the above steps into a full pseudocode implementation. How close were you to your original guess with the dancers? Check your implementation with a partner or instructor before getting started!
+ 
+ ## Code it out!
+ 
+ Go ahead and write translate your pseudocode into Swift in the `selectionSort` function below.
+ 
+ */
 
 extension Deck {
-    func selectionsort() {
+    func selectionSort() {
         //Student code here!
-        // TODO: Remove code
-        for count in 0...cards.count-2 {
-            var lowestIndex = count
-            for index in count+1...cards.count-1 {
-                if cards[index].value < cards[lowestIndex].value {
-                    lowestIndex = index
-                }
-            }
-            swap(lowestIndex, count)
-        }
+        
     }
 }
-deck.selectionsort()
-
-
-//: [Next](@next)
-
-
-
-
-
-
-
-
-
-
-
-
-
+deck.selectionSort()
 
 /*:
-Don't worry about this code. This takes the scene and deck information and displays it.
-*/
+ # Did you do it?
+ 
+ Congratulations, your array is now sorted! How do you feel about _Selection Sort_? Do you think we can do better?
+ 
+ */
+//: [Next](@next)
+/*:
+ Don't worry about this code. This takes the scene and deck information and displays it.
+ */
 sceneView.presentScene(scene);
 XCPlaygroundPage.currentPage.liveView = sceneView;
