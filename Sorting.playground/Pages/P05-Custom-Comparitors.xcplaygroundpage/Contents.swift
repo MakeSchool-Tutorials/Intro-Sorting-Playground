@@ -31,21 +31,21 @@ let (sceneView, scene) = CardSortScene.setupScene(deck)
 let numCardsInSuite = 13
 
 public func <(first: Card, second: Card) -> Bool {
-    // Student code here!
+    // Implement this!
     
     return true
 }
 
 extension Deck {
     public func selectionSort() {
-        for count in 0...cards.count-2 {
-            var lowestIndex = count
-            for index in count+1...cards.count-1 {
+        for index in 0...cards.count-2 {
+            var lowestIndex = index
+            for index in index+1...cards.count-1 {
                 if cards[index] < cards[lowestIndex] {
                     lowestIndex = index
                 }
             }
-            swap(lowestIndex, count)
+            swap(lowestIndex, index)
         }
     }
 }

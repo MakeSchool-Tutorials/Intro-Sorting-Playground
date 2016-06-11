@@ -7,7 +7,6 @@ public class CardSortScene: SKScene {
     var cardNodes = [CardNode]()
     
     var actionQueue = [CardAction]()
-    let animationTime = 0.7
     
     let actionLabel: SKLabelNode
     
