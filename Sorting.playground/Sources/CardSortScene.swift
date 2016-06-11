@@ -92,7 +92,7 @@ public class CardSortScene: SKScene {
         } else {
             if deck.comparator != nil {
                 if deck.isSorted() {
-                    actionLabel.text = "Sorting finished! :)"
+                    actionLabel.text = "Sorting successful! :)"
                 } else {
                     actionLabel.text = "Not sorted! :("
                 }
