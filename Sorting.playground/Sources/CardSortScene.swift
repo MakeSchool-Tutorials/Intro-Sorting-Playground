@@ -123,6 +123,7 @@ public class CardSortScene: SKScene {
         scene.scaleMode = .AspectFill
         let background = SKSpriteNode(imageNamed: "card_sorting-background")
         background.anchorPoint = CGPoint(x: 0, y: 0)
+        background.zPosition = -10
         scene.addChild(background)
         return (sceneView, scene)
     }
