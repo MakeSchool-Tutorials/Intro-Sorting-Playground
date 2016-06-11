@@ -52,7 +52,7 @@ public class CardNode: SKNode {
     
     public func animateMove(position: CGPoint, zPosition: CGFloat, completion: () -> Void) {
         self.zPosition = 10000
-        self.runAction(SKAction.scaleTo(1.1, duration: popAnimationTime)) { () -> Void in
+        self.runAction(SKAction.scaleTo(1.02, duration: popAnimationTime)) { () -> Void in
             self.runAction(SKAction.moveTo(position, duration: self.moveAnimationTime), completion: { () -> Void in
                 self.runAction(SKAction.scaleTo(1.0, duration: self.popAnimationTime), completion: { () -> Void in
                     self.zPosition = zPosition
