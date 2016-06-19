@@ -1,5 +1,6 @@
 /*:
-# Sorting
+ ![Make School Banner](./swift_banner.png)
+ # Sorting
 
  When programming with collections of data, one of the most common operations performed is sorting. Just think of all the ways in which you use sorting in everyday software:
  
@@ -13,7 +14,8 @@
  
  Most sorting algorithms are comparison-based, meaning the sort algorithm uses multiple swaps of two elements. In the following sections, you'll first learn how to swap two elements in an `Array`, and then start to build your first sorting function. We will use a deck of cards as an example since they are easy to visualize.
 
-- callout(Hint): Press next to get started!
+- callout(Hint): Press next to get started
 
-*/
+ */
+
 //: [Next](@next)

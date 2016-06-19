@@ -3,10 +3,7 @@ let deck = Deck(comparator: valueOnlyComparator)
 let (sceneView, scene) = CardSortScene.setupScene(deck)
 /*:
  Don't worry about the code here – this sets up the deck of cards that we'll be manipulating, and the scene that displays it.
- */
-//: [Previous](@previous)
-/*:
- 
+ ![Make School Banner](./swift_banner.png)
  # A faster sorting algorithm: Selection Sort
  
  _Selection sort_ is perhaps what you first think of when sorting an `Array`. Before we get started, let's check in with the dancers again! Check it out in action [here](https://www.youtube.com/watch?v=Ns4TPTC8whw).
@@ -41,7 +38,7 @@ deck.selectionSort()
  Congratulations, your array is now sorted! How do you feel about _Selection Sort_? Do you think we can do better?
  
  */
-//: [Next](@next)
+//: [Previous](@previous) | [Next](@next)
 /*:
  Don't worry about this code. This takes the scene and deck information and displays it.
  */

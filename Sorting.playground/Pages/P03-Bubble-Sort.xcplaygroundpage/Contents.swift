@@ -4,11 +4,7 @@ let (sceneView, scene) = CardSortScene.setupScene(deck)
 /*:
  
  Don't worry about the code here – this sets up the deck of cards that we'll be manipulating, and the scene that displays it.
- 
- */
-//: [Previous](@previous)
-/*:
- 
+ ![Make School Banner](./swift_banner.png) 
  # Accessing Card values
  
  Before we start, we should show you how to retrieve information from the `Card` _structs_ that make up our array. You can retrive the number `value` of a card like this:
@@ -90,7 +86,7 @@ deck.bubbleSort()
  Perhaps you're not satisfied. Maybe this sorting algorithm didn't seem very efficient to you. It sort of defies common sense. When you are sorting cards by hand you probably move the largest card to the end of the hand and then repeat the process. You likely _scan_ through the pile looking for the largest value, instead of comparing each card against its neighbor and doing this bubbling process. We'll explore this room for improvmeent in the next section and introduce a faster sorting algorithm called Selection Sort.
  
  */
-//: [Next](@next)
+//: [Previous](@previous) | [Next](@next)
 /*:
  Don't worry about this code. This takes the scene and deck information and displays it.
  */

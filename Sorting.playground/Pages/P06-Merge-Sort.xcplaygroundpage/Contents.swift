@@ -1,6 +1,5 @@
-//: [Previous](@previous)
 /*:
- 
+ ![Make School Banner](./swift_banner.png)
  # Merge Sort: A divide-and-conquer algorithm
  
  So far, we've implemented _iterative_ sorting algorithms – ones that go through each of the elements in the array and run some operation on each of them. This time, we're going to look at our first _recursive_ sorting algorithm: _Merge Sort_. The algorithm is split into two parts: divide & conquer (or merge).
@@ -26,3 +25,5 @@
  - callout(Crazy Challenge): Try writing out the pseudocode for _Merge Sort_ and compare it with a partner. Get a deck of cards and try it out your pseudocode with 10 cards (`Ace` through `Jack`).
  
  */
+
+//: [Previous](@previous)

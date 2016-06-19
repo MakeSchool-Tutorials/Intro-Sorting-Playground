@@ -4,12 +4,7 @@ let (sceneView, scene) = CardSortScene.setupScene(deck)
 /*:
  
  Don't worry about the code here – this sets up the deck of cards that we'll be manipulating, and the scene that displays it.
- 
- */
-//: [Previous](@previous)
-
-/*:
- 
+ ![Make School Banner](./swift_banner.png)
  # Swapping
  
  _Swapping_ two elements in an `Array` sounds pretty simple. You take the _element_ at the first index, the _element_ at the second index, and switch their places. Here, we've written out such a swap function for you, but its implementation is wrong. Can you find what's wrong and fix it?
@@ -54,21 +49,7 @@ deck.swap(4, 1)
  
  Once the deck is sorted, hit the `Next` button to move on to the next section. We'll teach you _Bubblesort_, a foolproof sorting algorithm that uses the swap function!
  */
-//: [Next](@next)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+//: [Previous](@previous) | [Next](@next)
 /*:
  Don't worry about this code. This takes the scene and deck information and displays it.
  */

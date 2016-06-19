@@ -3,10 +3,7 @@ let deck = Deck(comparator: suiteFirstComparator)
 let (sceneView, scene) = CardSortScene.setupScene(deck)
 /*:
  Don't worry about the code here – this sets up the deck of cards that we'll be manipulating, and the scene that displays it.
- */
-//: [Previous](@previous)
-/*:
- 
+ ![Make School Banner](./swift_banner.png)
  # Custom Comparators: Sorting by arbitrary properties
  
  So far we've only been sorting using the `value` property of the `Card` struct. But that's typically not how a fresh pack of cards is sorted by – it's typically sorted by _suite order_, then by _value_.
@@ -50,7 +47,7 @@ extension Deck {
     }
 }
 deck.selectionSort()
-//: [Next](@next)
+//: [Previous](@previous) | [Next](@next)
 /*:
  Don't worry about this code. This takes the scene and deck information and displays it.
  */
