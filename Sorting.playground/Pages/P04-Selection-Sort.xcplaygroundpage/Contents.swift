@@ -1,8 +1,4 @@
-import XCPlayground
-let deck = Deck(comparator: valueOnlyComparator)
-let (sceneView, scene) = CardSortScene.setupScene(deck)
 /*:
- Don't worry about the code here – this sets up the deck of cards that we'll be manipulating, and the scene that displays it.
  ![Make School Banner](./swift_banner.png)
  # A faster sorting algorithm: Selection Sort
  
@@ -30,7 +26,6 @@ extension Deck {
         
     }
 }
-deck.selectionSort()
 
 /*:
  # Did you do it?
@@ -42,5 +37,9 @@ deck.selectionSort()
 /*:
  Don't worry about this code. This takes the scene and deck information and displays it.
  */
+import XCPlayground
+let deck = Deck(comparator: valueOnlyComparator)
+let (sceneView, scene) = CardSortScene.setupScene(deck)
 sceneView.presentScene(scene)
 XCPlaygroundPage.currentPage.liveView = sceneView
+deck.selectionSort()

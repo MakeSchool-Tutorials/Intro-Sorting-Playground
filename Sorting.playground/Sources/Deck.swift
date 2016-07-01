@@ -13,15 +13,20 @@ public class Deck {
     public let comparator: ((Card, Card) -> (Int))?
     
     public init(comparator: ((Card, Card) -> (Int))?, seed: Bool = true, numberCards: Int = 13) {
-        if seed { srandom(UInt32(time(nil))) }
         self.comparator = comparator
         for i in 0..<numberCards {
             var value: Int
             var suite: Suite
             var unique = true
             repeat {
-                value = random() % 13 + 1
-                suite = Suite(rawValue: random() % 4)!
+                if seed {
+                    value = Int(arc4random_uniform(13) + 1)
+                    suite = Suite(rawValue: Int(arc4random_uniform(4)))!
+                } else {
+                    value = random() % 13 + 1
+                    suite = Suite(rawValue: random() % 4)!
+                }
+                unique = true
                 
                 // check if card is unique
                 for j in 0..<i {
