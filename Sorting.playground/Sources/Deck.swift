@@ -12,8 +12,8 @@ public class Deck {
     
     public let comparator: ((Card, Card) -> (Int))?
     
-    public init(comparator: ((Card, Card) -> (Int))?, numberCards: Int = 13) {
-        srandom(UInt32(time(nil)))
+    public init(comparator: ((Card, Card) -> (Int))?, seed: Bool = true, numberCards: Int = 13) {
+        if seed { srandom(UInt32(time(nil))) }
         self.comparator = comparator
         for i in 0..<numberCards {
             var value: Int

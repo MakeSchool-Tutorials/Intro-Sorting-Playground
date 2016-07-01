@@ -1,5 +1,5 @@
 import XCPlayground
-let deck = Deck(comparator: nil)
+let deck = Deck(comparator: nil, seed: false)
 let (sceneView, scene) = CardSortScene.setupScene(deck)
 /*:
  
