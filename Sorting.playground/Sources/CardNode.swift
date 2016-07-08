@@ -5,9 +5,9 @@ public class CardNode: SKNode {
     let cardRect = CGRect(x: 0, y: 0, width: 67, height: 105)
     let cardCornerRadius: CGFloat = 5.0
     let textPosition = CGPoint(x: 5, y: 85)
-    let suitePosition = CGPoint(x: 5, y: 85)
+    let suitPosition = CGPoint(x: 5, y: 85)
     let textPositionBottom = CGPoint(x: 70, y: 23)
-    let suitePositionBottom = CGPoint(x: 70, y: 23)
+    let suitPositionBottom = CGPoint(x: 70, y: 23)
     let textSize: CGFloat = 18
     
     let popAnimationTime = 0.5
@@ -28,10 +28,10 @@ public class CardNode: SKNode {
         cardText.anchorPoint = CGPoint(x: 0, y: 0)
         self.addChild(cardText)
         
-        let cardSuite = SKSpriteNode(imageNamed: "\(baseFile)suite-\(card.suite.rawValue)")
-        cardSuite.position = suitePosition
-        cardSuite.anchorPoint = CGPoint(x: 0, y: 1)
-        self.addChild(cardSuite)
+        let cardSuit = SKSpriteNode(imageNamed: "\(baseFile)suite-\(card.suit.rawValue)")
+        cardSuit.position = suitPosition
+        cardSuit.anchorPoint = CGPoint(x: 0, y: 1)
+        self.addChild(cardSuit)
         
         let cardText2 = SKSpriteNode(imageNamed: "\(baseFile)\(card.value)")
         cardText2.position = textPositionBottom
@@ -39,11 +39,11 @@ public class CardNode: SKNode {
         cardText2.zRotation = CGFloat(M_PI)
         self.addChild(cardText2)
         
-        let cardSuite2 = SKSpriteNode(imageNamed: "\(baseFile)suite-\(card.suite.rawValue)")
-        cardSuite2.position = suitePositionBottom
-        cardSuite2.anchorPoint = CGPoint(x: 0, y: 1)
-        cardSuite2.zRotation = CGFloat(M_PI)
-        self.addChild(cardSuite2)
+        let cardSuit2 = SKSpriteNode(imageNamed: "\(baseFile)suite-\(card.suit.rawValue)")
+        cardSuit2.position = suitPositionBottom
+        cardSuit2.anchorPoint = CGPoint(x: 0, y: 1)
+        cardSuit2.zRotation = CGFloat(M_PI)
+        self.addChild(cardSuit2)
     }
     
     required public init?(coder aDecoder: NSCoder) {

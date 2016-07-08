@@ -10,11 +10,11 @@ import Foundation
 
 public struct Card: Equatable {
     public let value: Int
-    public let suite: Suite
+    public let suit: Suit
     
-    init(_ value: Int, _ suite: Suite) {
+    init(_ value: Int, _ suit: Suit) {
         self.value = value
-        self.suite = suite
+        self.suit = suit
     }
     
     public func text() -> String {
@@ -30,17 +30,17 @@ public struct Card: Equatable {
         } else {
             valueText = "\(value)"
         }
-        return valueText + " " + suite.emoji()
+        return valueText + " " + suit.emoji()
     }
 }
 
 
 
 public func ==(card1: Card, card2: Card) -> Bool {
-    return card1.value == card2.value && card1.suite == card2.suite
+    return card1.value == card2.value && card1.suit == card2.suit
 }
 
-public enum Suite: Int {
+public enum Suit: Int {
     case Club = 0
     case Diamond
     case Heart

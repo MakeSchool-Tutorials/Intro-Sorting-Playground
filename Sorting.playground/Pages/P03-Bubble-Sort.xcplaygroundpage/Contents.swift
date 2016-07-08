@@ -7,11 +7,11 @@
      let firstCard = cards[0]
      let value = firstCard.value
  
- Similarly, you can retrieve the suite of a card, like this:
+ Similarly, you can retrieve the suit of a card, like this:
  
-     let suite = firstCard.suite
+     let suit = firstCard.suit
  
- We won't be dealing with suites just yet, though. You can continue to treat them all as equal!
+ We won't be dealing with suits just yet, though. You can continue to treat them all as equal!
  
  # Our First Sorting Algorithm: Bubble Sort!
  

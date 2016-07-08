@@ -16,27 +16,27 @@ public class Deck {
         self.comparator = comparator
         for i in 0..<numberCards {
             var value: Int
-            var suite: Suite
+            var suit: Suit
             var unique = true
             repeat {
                 if seed {
                     value = Int(arc4random_uniform(13) + 1)
-                    suite = Suite(rawValue: Int(arc4random_uniform(4)))!
+                    suit = Suit(rawValue: Int(arc4random_uniform(4)))!
                 } else {
                     value = random() % 13 + 1
-                    suite = Suite(rawValue: random() % 4)!
+                    suit = Suit(rawValue: random() % 4)!
                 }
                 unique = true
                 
                 // check if card is unique
                 for j in 0..<i {
-                    if cards[j] == Card(value, suite) {
+                    if cards[j] == Card(value, suit) {
                         unique = false
                         break;
                     }
                 }
             } while (!unique)
-            cards.append(Card(value, suite))
+            cards.append(Card(value, suit))
         }
     }
     
@@ -71,7 +71,7 @@ public class Deck {
                 // Set operation
                 action = CardAction(setIndex: targetIndex!,
                     setValue: cards[targetIndex!], oldValue: oldValue[targetIndex!])
-//                print("set \(targetIndex!) to \(cards[targetIndex!].value) of \(cards[targetIndex!].suite)")
+//                print("set \(targetIndex!) to \(cards[targetIndex!].value) of \(cards[targetIndex!].suit)")
             } else {
                 // Copy operation
                 action = CardAction(copyIndex: targetIndex!, from: originIndex!,
@@ -95,9 +95,9 @@ public class Deck {
     }
 }
 
-public func suiteFirstComparator(first: Card, second: Card) -> Int {
-    let numCardsInSuite = 13
-    return (first.suite.rawValue * numCardsInSuite + first.value) - (second.suite.rawValue * numCardsInSuite + second.value)
+public func suitFirstComparator(first: Card, second: Card) -> Int {
+    let numCardsInSuit = 13
+    return (first.suit.rawValue * numCardsInSuit + first.value) - (second.suit.rawValue * numCardsInSuit + second.value)
 }
 
 public func valueOnlyComparator(first: Card, second: Card) -> Int {

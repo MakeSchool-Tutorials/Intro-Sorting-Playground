@@ -13,7 +13,7 @@ let (sceneView, scene) = CardSortScene.setupScene(deck)
 extension Deck {
 /*:
      
- - note: Inside this class, the variable `cards` is an array of `Card` types. `Card` is a `struct` that we've defined ourselves, with two `Int` parameters -- `suite` and `value`.
+ - note: Inside this class, the variable `cards` is an array of `Card` types. `Card` is a `struct` that we've defined ourselves, with two `Int` parameters -- `suit` and `value`.
      
     A _struct_ is a lot like a _class_. It can define it's own methods and properties but it cannot use inheritance. There are a few other differences that instructors can help you with but they are not important for this exercise!
  
@@ -45,7 +45,7 @@ deck.swap(4, 1)
 
 /*:
  
- - callout(Challenge): The `Deck` _on this page_ will be the same every time you run the code. Can you get it sorted? Treat _Aces_ as `1`, _Jacks_ as `11`, _Queens_ as `12`, and _Kings_ as `13`. _Suite_ (or the symbol on the card) does not matter right now).
+ - callout(Challenge): The `Deck` _on this page_ will be the same every time you run the code. Can you get it sorted? Treat _Aces_ as `1`, _Jacks_ as `11`, _Queens_ as `12`, and _Kings_ as `13`. _Suit_ (or the symbol on the card) does not matter right now).
  
  Once the deck is sorted, hit the `Next` button to move on to the next section. We'll teach you _Bubblesort_, a foolproof sorting algorithm that uses the swap function!
  */
