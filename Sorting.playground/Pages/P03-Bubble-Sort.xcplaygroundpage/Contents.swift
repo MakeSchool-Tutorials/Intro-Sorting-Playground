@@ -25,13 +25,13 @@
  
  Let's imagine you inspect the first two cards of the deck. You compare the two cards -- does the first card have the higher value? _If_ it does, _swap_ the two cards. Now those two cards are in ascending order!
  
-     if card 0 is less card 1
+     if card 0 is greater than card 1
          swap card 0 and card 1
  
  Well, great. Now what about the rest of the cards? Worry not! We'll go ahead and do the same thing for the next pair of cards. And the next pair. And the next... until we reach the end of the array.
  
     for index from 0 to (number of cards - 2)
-        if card index is less than card (index + 1)
+        if card index is greater than card (index + 1)
             swap card index and card (index + 1)
  
  ### Why does the for loop go from (number of cards - 2)?
