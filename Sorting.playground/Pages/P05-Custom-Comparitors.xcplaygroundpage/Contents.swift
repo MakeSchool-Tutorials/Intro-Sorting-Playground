@@ -4,7 +4,7 @@
  
  So far we've only been sorting using the `value` property of the `Card` struct. But that's typically not how a fresh pack of cards is sorted by – it's typically sorted by _suit order_, then by _value_.
  
- Let's try to get our sort to do this too! We'll do it in such a way that separates the logic use to we compare cards, from the logic that sorts the cards.
+ Let's try to get our sort to do this too! We'll do it in such a way that separates the logic we use to compare cards, from the logic that sorts the cards.
  
  ## The approach
  
