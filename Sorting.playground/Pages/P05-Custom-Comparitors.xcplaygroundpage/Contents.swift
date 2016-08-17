@@ -38,7 +38,7 @@ extension Deck {
                     lowestIndex = index
                 }
             }
-            swap(lowestIndex, index)
+            swap(index, lowestIndex)
         }
     }
 }

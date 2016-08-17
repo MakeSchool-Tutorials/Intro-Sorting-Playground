@@ -19,7 +19,7 @@ extension Deck {
  
  */
 
-    public func swap(first: Int, _ second: Int) {
+    public func swap(_ first: Int, _ second: Int) {
         // Fix this!
         cards[first] = cards[second]
         cards[second] = cards[first]

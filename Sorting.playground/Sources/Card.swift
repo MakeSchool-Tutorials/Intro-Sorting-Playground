@@ -41,20 +41,20 @@ public func ==(card1: Card, card2: Card) -> Bool {
 }
 
 public enum Suit: Int {
-    case Club = 0
-    case Diamond
-    case Heart
-    case Spade
+    case club = 0
+    case diamond
+    case heart
+    case spade
     
     public func emoji() -> String {
         switch self {
-        case .Club:
+        case .club:
             return "♣️"
-        case .Diamond:
+        case .diamond:
             return "♦️"
-        case .Heart:
+        case .heart:
             return "♥️"
-        case .Spade:
+        case .spade:
             return "♠️"
         }
     }

@@ -28,7 +28,7 @@ public struct CardAction {
         self.originIndex = nil
         self.oldValue = oldValue
         self.newValue = setValue
-        self.actionType = .Set
+        self.actionType = .set
     }
     
     init(copyIndex: Int, from: Int, value: Card, oldValue: Card) {
@@ -36,7 +36,7 @@ public struct CardAction {
         self.originIndex = from
         self.oldValue = oldValue
         self.newValue = value
-        self.actionType = .Copy
+        self.actionType = .copy
     }
     
     init(swapIndex: Int, with: Int, value: Card, otherValue: Card) {
@@ -44,11 +44,11 @@ public struct CardAction {
         self.originIndex = with
         self.oldValue = value
         self.newValue = otherValue
-        self.actionType = .Swap
+        self.actionType = .swap
     }
     
-    static func reduce(first: CardAction, second: CardAction) -> CardAction? {
-        if (first.actionType == .Copy && second.actionType == .Set &&
+    static func reduce(_ first: CardAction, second: CardAction) -> CardAction? {
+        if (first.actionType == .copy && second.actionType == .set &&
             first.originIndex == second.targetIndex &&
             first.oldValue == second.newValue) {
             // reduce to a swap!
@@ -60,8 +60,8 @@ public struct CardAction {
 }
 
 public enum CardActionType {
-    case Set
-    case Copy
-    case Swap
+    case set
+    case copy
+    case swap
 }
 

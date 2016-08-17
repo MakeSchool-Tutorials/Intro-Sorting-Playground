@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class Deck {
+open class Deck {
     
-    public let comparator: ((Card, Card) -> (Int))?
+    open let comparator: ((Card, Card) -> (Int))?
     
     public init(comparator: ((Card, Card) -> (Int))?, seed: Bool = true, numberCards: Int = 13) {
         self.comparator = comparator
@@ -23,8 +23,8 @@ public class Deck {
                     value = Int(arc4random_uniform(13) + 1)
                     suit = Suit(rawValue: Int(arc4random_uniform(4)))!
                 } else {
-                    value = random() % 13 + 1
-                    suit = Suit(rawValue: random() % 4)!
+                    value = Int(arc4random_uniform(13)) + 1
+                    suit = Suit(rawValue: Int(arc4random_uniform(4)) % 4)!
                 }
                 unique = true
                 
@@ -40,9 +40,9 @@ public class Deck {
         }
     }
     
-    public var updateDelegate: (CardAction) -> () = {_ in }
+    open var updateDelegate: (CardAction) -> () = {_ in }
 
-    public var cards = [Card]() {
+    open var cards = [Card]() {
         didSet {
             // detect change and queue/edit swap actions
             if (oldValue.count != cards.count) {
@@ -82,7 +82,7 @@ public class Deck {
         }
     }
 
-    public func isSorted() -> Bool {
+    open func isSorted() -> Bool {
         if comparator == nil {
             return true
         }
@@ -95,11 +95,11 @@ public class Deck {
     }
 }
 
-public func suitFirstComparator(first: Card, second: Card) -> Int {
+public func suitFirstComparator(_ first: Card, second: Card) -> Int {
     let numCardsInSuit = 13
     return (first.suit.rawValue * numCardsInSuit + first.value) - (second.suit.rawValue * numCardsInSuit + second.value)
 }
 
-public func valueOnlyComparator(first: Card, second: Card) -> Int {
+public func valueOnlyComparator(_ first: Card, second: Card) -> Int {
     return first.value - second.value
 }
