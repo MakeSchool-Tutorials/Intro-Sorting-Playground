@@ -22,7 +22,13 @@
 
 extension Deck {
     func selectionSort() {
-        //Student code here!
+        for i in 0..<(cards.count-1){
+            for j in (i+1)..<cards.count{
+                if cards[i].value > cards[j].value{
+                    swap(i, j)
+                }
+            }
+        }
         
     }
 }

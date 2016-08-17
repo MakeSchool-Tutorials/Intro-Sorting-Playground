@@ -26,4 +26,77 @@
  
  */
 
+//mergeSort(list){
+//base case:
+//if list.count <= 1
+//return, because a single element must be sorted
+//else
+//split list into two separate lists
+//sort the two lists
+//merge the two lists
+//return that merged list
+
+let numCardsInSuit = 13
+
+public func <(first: Card, second: Card) -> Bool {
+    // Implement this!
+    return first.suit.rawValue * numCardsInSuit + first.value < second.suit.rawValue * numCardsInSuit + second.value
+}
+
+extension Deck{
+    
+    func merge_sort(){
+        cards = merge_sort(inputCards: cards)
+    }
+    
+    private func merge_sort(inputCards: [Card]) -> [Card]{
+        let sortMe = inputCards
+        
+        //Base case
+        if sortMe.count <= 1{
+            return sortMe
+        }
+        var left = [Card]()
+        var right = [Card]()
+        for index in 0..<sortMe.count{
+            index % 2 == 0 ? left.append(sortMe[index]) : right.append(sortMe[index])
+        }
+        let sortedLeft = merge_sort(inputCards: left)
+        let sortedRight = merge_sort(inputCards: right)
+        return merge(sortedLeft, sortedRight)
+        
+    }
+    
+    private func merge(_ left:[Card],_ right:[Card]) -> [Card]{
+        var mergedCards = [Card]()
+        var mutableLeft = left
+        var mutableRight = right
+        while (mutableLeft.count + mutableRight.count > 0){
+            guard let leftCard = mutableLeft.first else {
+                //if the left stack is empty, add the first card of the right stack
+                mergedCards.append(mutableRight.removeFirst())
+                continue
+            }
+            guard let rightCard = mutableRight.first else {
+                //if the right stack is empty, add the first card of the left stack
+                mergedCards.append(mutableLeft.removeFirst())
+                continue
+            }
+            mergedCards.append((leftCard < rightCard) ? mutableLeft.removeFirst() : mutableRight.removeFirst())
+        }
+        return mergedCards
+    }
+}
+
+
+
+import XCPlayground
+let deck = Deck(comparator: suitFirstComparator)
+let (sceneView, scene) = CardSortScene.setupScene(deck)
+sceneView.presentScene(scene)
+XCPlaygroundPage.currentPage.liveView = sceneView
+deck.merge_sort()
+deck.isSorted()
+
+
 //: [Previous](@previous)

@@ -21,8 +21,12 @@ extension Deck {
 
     public func swap(_ first: Int, _ second: Int) {
         // Fix this!
-        cards[first] = cards[second]
-        cards[second] = cards[first]
+        //First, make copies of both cards
+        let firstCard = cards[first]
+        let secondCard = cards[second]
+        //Then, assign each position in the Deck cards to the appropriate card
+        cards[first] = secondCard
+        cards[second] = firstCard
     }
     
 /*:
@@ -42,6 +46,11 @@ extension Deck {
  */
 
 deck.swap(4, 1)
+
+/*
+CANNOT IMPLEMENT CHALLENGE
+ `random()` is deprecated and `arc4random()` cannot be seeded. The best alternative is using GameKit's random number generator, but doing so breaks the code with no explanation at all. I think it's a beta bug, but I'm not sure. I found one stack overflow post where this works, but they were on beta 1 or 2. I don't think this is a problem worth addressing until a more stable version of XCode 8 rolls out.
+*/
 
 /*:
  

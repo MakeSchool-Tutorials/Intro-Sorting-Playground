@@ -52,10 +52,20 @@
 
 extension Deck {
     func bubbleSort() {
-        // Implement this!
-        
+        var sorted : Bool!
+        repeat {
+            sorted = true
+            for index in 0...(cards.count - 2){
+                if cards[index].value > self.cards[index + 1].value {
+                    swap(index, index + 1)
+                    sorted = false
+                }
+            }
+        } while (!sorted)
     }
 }
+
+
 
 /*:
  

@@ -25,8 +25,7 @@ let numCardsInSuit = 13
 
 public func <(first: Card, second: Card) -> Bool {
     // Implement this!
-    
-    return true
+    return first.suit.rawValue * numCardsInSuit + first.value < second.suit.rawValue * numCardsInSuit + second.value
 }
 
 extension Deck {
@@ -51,4 +50,6 @@ let deck = Deck(comparator: suitFirstComparator)
 let (sceneView, scene) = CardSortScene.setupScene(deck)
 sceneView.presentScene(scene)
 XCPlaygroundPage.currentPage.liveView = sceneView
+print(deck.cards)
 deck.selectionSort()
+print(deck.cards)
