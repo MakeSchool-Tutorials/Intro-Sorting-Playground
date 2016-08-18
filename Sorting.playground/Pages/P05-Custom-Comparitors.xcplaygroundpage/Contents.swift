@@ -41,7 +41,7 @@ extension Deck {
         }
     }
 }
-<!-- TODO: Again, the deck code is on the bottom. I think it should be here, a visual test for them. --!>
+<!-- TODO: Again, the deck code is on the bottom. I think it should be here, a more visible test for them. --!>
 //: [Previous](@previous) | [Next](@next)
 /*:
  Don't worry about this code. This takes the scene and deck information and displays it.
