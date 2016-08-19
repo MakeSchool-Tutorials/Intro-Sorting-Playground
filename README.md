@@ -10,9 +10,6 @@
 - Swapping: 
   - Same Value in both cards - Remember that if you change a value of the array you loose the previous one, you have to store that value.
   
-- Bubble Sort: 
-  - 
-  
 - Selection Sort: 
   - Using another method to sort it - Create the code for this method, there are other ways to do it 
   but you should learn this method first.
