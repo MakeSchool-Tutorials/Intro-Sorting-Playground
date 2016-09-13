@@ -14,6 +14,7 @@
  
  - callout(Challenge): Modify the function so that it returns a `true` _if_ the left card is less than the right card and `false` if it should not! Make sure to use _suit order_ then _value_.
  
+ 
  - callout(Hint): You can retrieve the integer value of a _suit_ with `card.suit.rawValue`. The values for these will be between 0 and 3, in ascending suit order. Also we've given you a handy constant – `numCardsInSuit` that gives you the number of cards in each suit, `13`. You can use this to your advantage!
  
     Brainstorm with a partner to implement the _custom comparitor_ below! Remember, you want to sort by _suit_ and then by _value_.

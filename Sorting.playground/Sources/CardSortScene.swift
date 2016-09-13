@@ -1,6 +1,6 @@
 import SpriteKit
 
-public class CardSortScene: SKScene {
+open class CardSortScene: SKScene {
     
     let deck: Deck
     var cardNodes = [CardNode]()
@@ -24,8 +24,8 @@ public class CardSortScene: SKScene {
         }
         
         actionLabel.fontSize = 24.0
-        actionLabel.verticalAlignmentMode = .Baseline
-        actionLabel.horizontalAlignmentMode = .Center
+        actionLabel.verticalAlignmentMode = .baseline
+        actionLabel.horizontalAlignmentMode = .center
         actionLabel.position = CGPoint(x: 160, y: 50)
         self.addChild(actionLabel)
     }
@@ -34,9 +34,9 @@ public class CardSortScene: SKScene {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override public func didMoveToView(view: SKView) {
-        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(1 * Double(NSEC_PER_SEC)))
-        dispatch_after(delayTime, dispatch_get_main_queue()) { () -> Void in
+    override open func didMove(to view: SKView) {
+        let delayTime = DispatchTime.now() + Double(Int64(1 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
             self.animate()
         }
     }
@@ -44,7 +44,7 @@ public class CardSortScene: SKScene {
     func animate() {
         if let action = actionQueue.first {
             switch action.actionType {
-            case .Copy:
+            case .copy:
                 let copy = CardNode(card: action.newValue!)
                 copy.position = cardPositionForIndex(action.originIndex!)
                 self.addChild(copy)
@@ -59,7 +59,7 @@ public class CardSortScene: SKScene {
                     self.actionQueue.removeFirst()
                     self.animate()
                 })
-            case .Swap:
+            case .swap:
                 let first = cardNodes[action.originIndex!]
                 let second = cardNodes[action.targetIndex]
                 
@@ -73,7 +73,7 @@ public class CardSortScene: SKScene {
                     self.actionQueue.removeFirst()
                     self.animate()
                 })
-            case .Set:
+            case .set:
                 actionLabel.text = "Setting index \(action.targetIndex) to \(action.newValue!.text())"
                 
                 let copy = CardNode(card: action.newValue!)
@@ -98,7 +98,7 @@ public class CardSortScene: SKScene {
         }
     }
     
-    public func enqueueAction(action: CardAction) {
+    open func enqueueAction(_ action: CardAction) {
         if let last = actionQueue.last {
             if let combinedAction = CardAction.reduce(last, second: action) {
                 actionQueue[actionQueue.count-1] = combinedAction
@@ -108,19 +108,19 @@ public class CardSortScene: SKScene {
         actionQueue.append(action)
     }
     
-    func cardPositionForIndex(index: Int) -> CGPoint {
+    func cardPositionForIndex(_ index: Int) -> CGPoint {
         let v = CGFloat(index)
         let origin = CGPoint(x: 50, y: 450)
         let delta = CGPoint(x: 10, y: -30)
         return CGPoint(x: origin.x + delta.x * v, y: origin.y + delta.y * v)
     }
     
-    public static func setupScene(deck: Deck) -> (SKView, CardSortScene) {
+    open static func setupScene(_ deck: Deck) -> (SKView, CardSortScene) {
         let size = CGSize(width: 320, height: 568)
-        let sceneView = SKView(frame: CGRect(origin: CGPointZero, size: size))
+        let sceneView = SKView(frame: CGRect(origin: CGPoint.zero, size: size))
         sceneView.wantsLayer = true
         let scene = CardSortScene(deck: deck, size: size)
-        scene.scaleMode = .AspectFill
+        scene.scaleMode = .aspectFill
         let background = SKSpriteNode(imageNamed: "card_sorting-background")
         background.anchorPoint = CGPoint(x: 0, y: 0)
         background.zPosition = -10

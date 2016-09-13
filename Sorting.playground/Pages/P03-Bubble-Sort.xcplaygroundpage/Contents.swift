@@ -71,6 +71,7 @@ extension Deck {
  
  - callout(Challenge): Modify the `bubbleSort()` function above to finish sorting the cards!
  
+ 
  - callout(Hint): It involves wrapping our existing code into _another_ for loop, and then modifying the variables that determine when the "bubbling" process ends.
  
     You can reverse a range with `.reverse()`. `(1...5)` would produce `1, 2, 3, 4, 5` but `(1...5).reverse()` produces `5, 4, 3, 2, 1`.

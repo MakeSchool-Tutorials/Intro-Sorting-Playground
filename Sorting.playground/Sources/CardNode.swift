@@ -1,6 +1,6 @@
 import SpriteKit
 
-public class CardNode: SKNode {
+open class CardNode: SKNode {
     
     let cardRect = CGRect(x: 0, y: 0, width: 67, height: 105)
     let cardCornerRadius: CGFloat = 5.0
@@ -50,27 +50,27 @@ public class CardNode: SKNode {
         super.init(coder: aDecoder)
     }
     
-    public func animateMove(position: CGPoint, zPosition: CGFloat, completion: () -> Void) {
+    open func animateMove(_ position: CGPoint, zPosition: CGFloat, completion: @escaping () -> Void) {
         self.zPosition = 10000
-        self.runAction(SKAction.scaleTo(1.02, duration: popAnimationTime)) { () -> Void in
-            self.runAction(SKAction.moveTo(position, duration: self.moveAnimationTime), completion: { () -> Void in
-                self.runAction(SKAction.scaleTo(1.0, duration: self.popAnimationTime), completion: { () -> Void in
+        self.run(SKAction.scale(to: 1.02, duration: popAnimationTime), completion: { () -> Void in
+            self.run(SKAction.move(to: position, duration: self.moveAnimationTime), completion: { () -> Void in
+                self.run(SKAction.scale(to: 1.0, duration: self.popAnimationTime), completion: { () -> Void in
                     self.zPosition = zPosition
                     completion()
                 })
             })
-        }
+        }) 
     }
     
-    public func animateDisappear(completion: () -> Void) {
-        self.runAction(SKAction.moveByX(0, y: -100.0, duration: appearAnimationTime))
-        self.runAction(SKAction.fadeOutWithDuration(appearAnimationTime), completion: completion)
+    open func animateDisappear(_ completion: @escaping () -> Void) {
+        self.run(SKAction.moveBy(x: 0, y: -100.0, duration: appearAnimationTime))
+        self.run(SKAction.fadeOut(withDuration: appearAnimationTime), completion: completion)
     }
     
-    public func animateAppear(completion: () -> Void) {
+    open func animateAppear(_ completion: @escaping () -> Void) {
         self.position.y += 100.0
         self.alpha = 0.0
-        self.runAction(SKAction.moveByX(0, y: -100.0, duration: appearAnimationTime))
-        self.runAction(SKAction.fadeInWithDuration(appearAnimationTime), completion: completion)
+        self.run(SKAction.moveBy(x: 0, y: -100.0, duration: appearAnimationTime))
+        self.run(SKAction.fadeIn(withDuration: appearAnimationTime), completion: completion)
     }
 }
