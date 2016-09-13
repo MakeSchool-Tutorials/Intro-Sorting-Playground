@@ -16,6 +16,7 @@
  ## Visual representation
  
  This algorithm makes a lot more sense when seen visually (from [Wikipedia's page on Merge Sort](https://en.wikipedia.org/wiki/Merge_sort)):
+ 
  ![](mergesort.gif)
  
  ## I'm still a bit confused...

@@ -4,7 +4,9 @@ let (sceneView, scene) = CardSortScene.setupScene(deck)
 /*:
  
  Don't worry about the code here – this sets up the deck of cards that we'll be manipulating, and the scene that displays it.
+ 
  ![Make School Banner](./swift_banner.png)
+ 
  # Swapping
  
  _Swapping_ two elements in an `Array` sounds pretty simple. You take the _element_ at the first index, the _element_ at the second index, and switch their places. Here, we've written out such a swap function for you, but its implementation is wrong. Can you find what's wrong and fix it?
