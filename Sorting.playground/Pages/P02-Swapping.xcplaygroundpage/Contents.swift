@@ -1,4 +1,4 @@
-import XCPlayground
+import PlaygroundSupport
 let deck = Deck(comparator: nil, seed: false)
 let (sceneView, scene) = CardSortScene.setupScene(deck)
 /*:
@@ -54,4 +54,4 @@ deck.swap(4, 1)
  Don't worry about this code. This takes the scene and deck information and displays it.
  */
 sceneView.presentScene(scene)
-XCPlaygroundPage.currentPage.liveView = sceneView
+PlaygroundPage.current.liveView = sceneView

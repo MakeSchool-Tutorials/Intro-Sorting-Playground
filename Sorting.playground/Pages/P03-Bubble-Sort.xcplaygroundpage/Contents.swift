@@ -87,9 +87,9 @@ extension Deck {
 /*:
  Don't worry about this code. This takes the scene and deck information and displays it.
  */
-import XCPlayground
+import PlaygroundSupport
 let deck = Deck(comparator: valueOnlyComparator, seed: true)
 let (sceneView, scene) = CardSortScene.setupScene(deck)
 sceneView.presentScene(scene)
-XCPlaygroundPage.currentPage.liveView = sceneView
+PlaygroundPage.current.liveView = sceneView
 deck.bubbleSort()
