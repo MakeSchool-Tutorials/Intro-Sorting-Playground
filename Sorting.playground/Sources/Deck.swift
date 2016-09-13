@@ -14,29 +14,28 @@ open class Deck {
     
     public init(comparator: ((Card, Card) -> (Int))?, seed: Bool = true, numberCards: Int = 13) {
         self.comparator = comparator
-        for i in 0..<numberCards {
-            var value: Int
-            var suit: Suit
-            var unique = true
-            repeat {
-                if seed {
+        if seed {
+            for i in 0..<numberCards {
+                var value: Int
+                var suit: Suit
+                var unique = true
+                repeat {
                     value = Int(arc4random_uniform(13) + 1)
                     suit = Suit(rawValue: Int(arc4random_uniform(4)))!
-                } else {
-                    value = Int(arc4random_uniform(13) + 1)
-                    suit = Suit(rawValue: Int(arc4random_uniform(4)))!
-                }
-                unique = true
-                
-                // check if card is unique
-                for j in 0..<i {
-                    if cards[j] == Card(value, suit) {
-                        unique = false
-                        break;
+                    unique = true
+                    
+                    // check if card is unique
+                    for j in 0..<i {
+                        if cards[j] == Card(value, suit) {
+                            unique = false
+                            break;
+                        }
                     }
-                }
-            } while (!unique)
-            cards.append(Card(value, suit))
+                } while (!unique)
+                cards.append(Card(value, suit))
+            }
+        } else {
+            cards = [Card(6, Suit(rawValue: 3)!), Card(9, Suit(rawValue: 1)!), Card(8, Suit(rawValue: 3)!), Card(2, Suit(rawValue: 3)!), Card(3, Suit(rawValue: 2)!), Card(11, Suit(rawValue: 2)!), Card(2, Suit(rawValue: 2)!), Card(13, Suit(rawValue: 2)!), Card(7, Suit(rawValue: 2)!), Card(7, Suit(rawValue: 0)!), Card(8, Suit(rawValue: 1)!), Card(12, Suit(rawValue: 3)!), Card(7, Suit(rawValue: 3)!)]
         }
     }
     
