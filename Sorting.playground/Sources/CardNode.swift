@@ -36,13 +36,13 @@ open class CardNode: SKNode {
         let cardText2 = SKSpriteNode(imageNamed: "\(baseFile)\(card.value)")
         cardText2.position = textPositionBottom
         cardText2.anchorPoint = CGPoint(x: 0, y: 0)
-        cardText2.zRotation = CGFloat(M_PI)
+        cardText2.zRotation = CGFloat(Double.pi)
         self.addChild(cardText2)
         
         let cardSuit2 = SKSpriteNode(imageNamed: "\(baseFile)suite-\(card.suit.rawValue)")
         cardSuit2.position = suitPositionBottom
         cardSuit2.anchorPoint = CGPoint(x: 0, y: 1)
-        cardSuit2.zRotation = CGFloat(M_PI)
+        cardSuit2.zRotation = CGFloat(Double.pi)
         self.addChild(cardSuit2)
     }
     
